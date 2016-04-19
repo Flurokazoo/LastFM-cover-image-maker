@@ -1,0 +1,7 @@
+RewriteEngine on
+
+ RewriteRule    ^facebook$ facebook.html
+  RewriteRule    ^plugindemo$ plugin.html
+   RewriteRule    ^fbjasper facebookjasper.html
+   RewriteRule    ^fbjeremy facebookjeremy.html
+
