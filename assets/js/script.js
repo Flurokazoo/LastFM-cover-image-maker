@@ -9,7 +9,7 @@ function init()
         imageMeasurement: "timesacross",
         imageSize: 6,
         userName: 'lenndk14',
-        listeningPeriod: 'overall',
+        listeningPeriod: '1month',
         excludeArtists: [],
         shuffle: true
     });

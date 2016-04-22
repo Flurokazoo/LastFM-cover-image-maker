@@ -11,11 +11,12 @@ $count = 0;
 $array = array();
 
 foreach ($json['topalbums']['album'] as $entry) {
-    
-    $array[$count]['artist'] = $entry['artist']['name'];
-    $array[$count]['albumname'] = $entry['name'];
-    $array[$count]['img'] = $entry['image'][3]['#text'];
-    $count++;
+    if($entry['image'][3]['#text']){
+        $array[$count]['artist'] = $entry['artist']['name'];
+        $array[$count]['albumname'] = $entry['name'];
+        $array[$count]['img'] = $entry['image'][3]['#text'];
+        $count++;
+    }
 }
 
 $array = json_encode($array);

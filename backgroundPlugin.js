@@ -8,13 +8,13 @@
         userName: 'japperman',
         listeningPeriod: 'overall',
         excludeArtists: [],
-        shuffle: true        
+        shuffle: true
     };
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 
     var $selector;
-    
+
     //Methods
     var methods = {
         init: function (selector) {
@@ -34,25 +34,43 @@
 
         drawImage: function (data) {
             var imgSize = Math.ceil(settings.width / settings.imageSize);
+            var yCount = settings.height / imgSize;
+
+            if (yCount != parseInt(yCount, 10)) {
+                yCount = Math.floor(yCount) + 2;
+            }
+
+            var dataArray = [];
+
+            var arrayLength = (yCount * settings.imageSize);
+
+
+            for (i = 0; i < arrayLength; i++) {
+                dataArray[i] = data[i];
+            }
+
             var leftover = settings.height % imgSize;
             canvas.width = settings.width;
             canvas.height = settings.height;
-            var offset = imgSize - (leftover /2);
+            var offset = imgSize - (leftover / 2);
             var x = 0;
-            shuffle(data);
+            shuffle(dataArray);
             var y = 0 - offset;
-            $.each(data, function (i, dataEntry) {
+            console.log(dataArray);
+            $.each(dataArray, function (i, dataEntry) {
                 var img = new Image();
+                console.log(dataEntry);
                 img.src = dataEntry.img;
                 img.onload = function () {
                     ctx.drawImage(this, x, y, imgSize, imgSize);
-                    if (x >= settings.width) {
+                    console.log(x + "x" + y + "y");
+                    if (x >= settings.width - imgSize) {
                         x = 0;
                         y = y + imgSize;
                     } else {
-                        console.log(settings.imageSize);
                         x = x + imgSize;
                     }
+
                 };
             });
         }
