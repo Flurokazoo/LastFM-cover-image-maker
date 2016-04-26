@@ -30,7 +30,7 @@
                 dataType: "json",
                 url: 'GetLastFmData.php',
                 data: {user: settings.userName, period: settings.listeningPeriod},
-                success: methods.setupImages()
+                success: methods.setupImages
             });
         },
 
@@ -40,6 +40,7 @@
          * @param data
          */
         setupImages: function (data) {
+            console.log(data);
             var imgSize = Math.ceil(settings.width / settings.imageSize);
             var yCount = settings.height / imgSize;
             if (yCount != parseInt(yCount, 10)) {
