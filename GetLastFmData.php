@@ -3,9 +3,10 @@
 $key = "c4a37a4b7744e1b0e78c09be5cb8908f";
 $secret = "4bb894f812e0c6ce17512ad92f6268fa";
 $user = $_GET['user'];
+$period = $_GET['period'];
 
 
-$getAlbumListUrl = file_get_contents("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=" . $user . "&api_key=" . $key . "&format=json&period=1month");
+$getAlbumListUrl = file_get_contents("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&limit=200&user=" . $user . "&api_key=" . $key . "&format=json&period=" . $period);
 $json = json_decode($getAlbumListUrl, true);
 $count = 0;
 $array = array();
@@ -21,4 +22,5 @@ foreach ($json['topalbums']['album'] as $entry) {
 
 $array = json_encode($array);
 echo $array;
+//echo $getAlbumListUrl;
 exit;

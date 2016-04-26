@@ -4,4 +4,6 @@ RewriteEngine on
   RewriteRule    ^plugindemo$ plugin.html
    RewriteRule    ^fbjasper facebookjasper.html
    RewriteRule    ^fbjeremy facebookjeremy.html
+   RewriteRule    ^jenzus jenzus.html
+   RewriteRule    ^mira mira.html
 
