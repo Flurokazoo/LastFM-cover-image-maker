@@ -27,7 +27,7 @@
             $.ajax({
                 dataType: "json",
                 url: 'GetLastFmData.php',
-                data: {user: settings.userName},
+                data: {user: settings.userName, period: settings.listeningPeriod},
                 success: methods.drawImage
             });
         },
@@ -41,8 +41,10 @@
             }
 
             var dataArray = [];
-
             var arrayLength = (yCount * settings.imageSize);
+            console.log(arrayLength + " is arrayLength");
+            var x = 0;
+            var y;
 
 
             for (i = 0; i < arrayLength; i++) {
@@ -53,9 +55,15 @@
             canvas.width = settings.width;
             canvas.height = settings.height;
             var offset = imgSize - (leftover / 2);
-            var x = 0;
+
             shuffle(dataArray);
-            var y = 0 - offset;
+
+            if (offset == imgSize) {
+                y = 0;
+            } else {
+                y = 0 - offset;
+            }
+            console.log(imgSize + " is imagesize");
             console.log(dataArray);
             $.each(dataArray, function (i, dataEntry) {
                 var img = new Image();
